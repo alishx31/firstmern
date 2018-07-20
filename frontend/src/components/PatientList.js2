@@ -1,0 +1,49 @@
+import React from 'react';
+
+import PatientStore from './stores/PatientStore';
+class PatientList extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			patients: ''
+		};
+
+		this._onChange = this._onChange.bind(this);
+	}
+
+	_onChange() {
+		this.setState({ patients: PatientStore._getPatients() });
+	}
+
+	componentWillMount() {
+		PatientStore.addChangeListener(this._onChange);
+		console.log('data',this.state.patients);
+	}
+
+	componentWillUnmount() {
+		PatientStore.removeChangeListener(this._onChange);
+	}
+
+	render() {
+
+		// let noPatientsMessage;
+
+		// //Show a friendly message instead if there are no items.
+		// if (!this.state.patients.length) {
+		// 	noPatientsMessage = (<li className="no-items">Your Patient data is empty!</li>);
+		// }
+
+		return (
+			<ul className="items-list">
+				{/* {noPatientsMessage}
+				{this.state.patients.map((patientDetail) => {
+					
+					return (<li key={patientDetail.id}>{patientDetail.name} <span className="test">{patientDetail.age}</span></li>);
+				})} */}
+			</ul>
+		);
+	}
+}
+
+export default PatientList;

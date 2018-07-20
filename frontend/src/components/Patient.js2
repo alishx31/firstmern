@@ -1,0 +1,30 @@
+import React, {
+    Component
+} from 'react';
+
+class Patient extends Component {
+
+
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            age: '',
+            title: '',
+            symptoms: ''
+        };
+    }
+
+        render() {
+            return(
+                <div>
+                    Name: {this.state.name}
+                    Age:{this.state.name}
+                </div>
+            );
+        }
+
+    }
+
+    export default Patient;
